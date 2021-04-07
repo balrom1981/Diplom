@@ -29,22 +29,22 @@ public class MainPage {
     private SelenideElement invalidDurationCard = $(withText("Неверно указан срок действия карты"));
     private SelenideElement cardExpired = $(withText("Истёк срок действия карты"));
 
-    public void buyWithoutCredit(){
+    public void buyWithoutCredit(String cardNumber, String month, String year, String owner, String cvs){
         buttonBuy.click();
-        fieldCardNumber.setValue(DataHelper.getFirstCardNumber());
-        fieldMonth.setValue(DataHelper.getValidMonth());
-        fieldYear.setValue(DataHelper.getValidYear());
-        fieldOwner.setValue(DataHelper.getValidOwner());
-        fieldCvc.setValue(DataHelper.getValidCvs());
+        fieldCardNumber.setValue(cardNumber);
+        fieldMonth.setValue(month);
+        fieldYear.setValue(year);
+        fieldOwner.setValue(owner);
+        fieldCvc.setValue(cvs);
         buttonContinue.click();
     }
-    public void buyWithCredit(){
+    public void buyWithCredit(String cardNumber, String month, String year, String owner, String cvs){
         buttonBuyByCredit.click();
-        fieldCardNumber.setValue(DataHelper.getFirstCardNumber());
-        fieldMonth.setValue(DataHelper.getValidMonth());
-        fieldYear.setValue(DataHelper.getValidYear());
-        fieldOwner.setValue(DataHelper.getValidOwner());
-        fieldCvc.setValue(DataHelper.getValidCvs());
+        fieldCardNumber.setValue(cardNumber);
+        fieldMonth.setValue(month);
+        fieldYear.setValue(year);
+        fieldOwner.setValue(owner);
+        fieldCvc.setValue(cvs);
         buttonContinue.click();
     }
 
