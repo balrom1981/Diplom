@@ -62,7 +62,7 @@ public class DataHelper {
     }
 
     public static String getInvalidCvs(){
-        return "(12";
+        return "12";
     }
 
     public static String getEmptyCvs(){
