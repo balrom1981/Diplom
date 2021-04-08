@@ -28,6 +28,7 @@ public class MainPage {
     private SelenideElement errorFormat = $(withText("Неверный формат"));
     private SelenideElement invalidDurationCard = $(withText("Неверно указан срок действия карты"));
     private SelenideElement cardExpired = $(withText("Истёк срок действия карты"));
+    private SelenideElement requiredField = $(withText("Поле обязательно для заполнения"));
 
     public void buyWithoutCredit(String cardNumber, String month, String year, String owner, String cvs){
         buttonBuy.click();
@@ -58,6 +59,10 @@ public class MainPage {
 
     public void formatProblems(){
         errorFormat.shouldBe(visible);
+    }
+
+    public void necessaryField(){
+        requiredField.shouldBe(visible);
     }
 
     public void durationProblems(){
