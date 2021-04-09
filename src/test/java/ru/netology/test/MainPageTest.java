@@ -39,6 +39,7 @@ public class MainPageTest {
         val cvs = DataHelper.getValidCvs();
         page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
         page.approvedByBank();
+    }
 
     @Test
     void shouldRejectFirstCardWithoutCredit() {
