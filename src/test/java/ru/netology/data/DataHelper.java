@@ -38,6 +38,10 @@ public class DataHelper {
         return "  ";
     }
 
+    public static String getZeroMonth() {
+        return "00";
+    }
+
     public static String getValidYear() {
         return "24";
     }

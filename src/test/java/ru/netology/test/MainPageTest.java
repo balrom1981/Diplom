@@ -29,6 +29,7 @@ public class MainPageTest {
         SelenideLogger.removeListener("allure");
     }
 
+    /* Покупка без кредита */
     @Test
     void shouldApproveFirstCardWithoutCredit() {
         MainPage page = new MainPage();
@@ -42,7 +43,7 @@ public class MainPageTest {
     }
 
     @Test
-    void shouldRejectFirstCardWithoutCredit() {
+    void shouldRejectSecondCardWithoutCredit() {
         MainPage page = new MainPage();
         val cardNumber = DataHelper.getSecondCardNumber();
         val month = DataHelper.getValidMonth();
@@ -53,6 +54,140 @@ public class MainPageTest {
         page.rejectByBank();
     }
 
+    @Test
+    void shouldRejectDifferentCardWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getCardNumberDifferent();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.rejectByBank();
+    }
+
+    @Test
+    void shouldRejectEmptyCardNumberWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getCardNumberEmpty();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
+
+    @Test
+    void shouldRejectEmptyMonthWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getEmptyMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
+
+    @Test
+    void shouldRejectInvalidMonthWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getInvalidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.durationProblems();
+    }
+
+    @Test
+    void shouldRejectZeroMonthWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getZeroMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.durationProblems();
+    }
+
+    @Test
+    void shouldRejectEmptyYearWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getEmptyYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
+
+    @Test
+    void shouldRejectInvalidYearWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getInvalidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.periodValidityProblems();
+    }
+
+    @Test
+    void shouldRejectEmptyOwnerWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getEmptyOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.necessaryField();
+    }
+
+    @Test
+    void shouldRejectInvalidOwnerWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getInvalidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
+
+    @Test
+    void shouldRejectEmptyCvsWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getEmptyCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
+
+    @Test
+    void shouldRejectInvalidCvsWithoutCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getInvalidCvs();
+        page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
+
+
+    /* Покупка с кредитом */
     @Test
     void shouldApproveFirstCardWithCredit() {
         MainPage page = new MainPage();
@@ -66,7 +201,7 @@ public class MainPageTest {
     }
 
     @Test
-    void shouldRejectSecondCardWithoutCredit() {
+    void shouldRejectSecondCardWithCredit() {
         MainPage page = new MainPage();
         val cardNumber = DataHelper.getSecondCardNumber();
         val month = DataHelper.getValidMonth();
@@ -78,7 +213,20 @@ public class MainPageTest {
     }
 
     @Test
-    void shouldRejectEmptyCardNumber() {
+    void shouldRejectDifferentCardWithCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getCardNumberDifferent();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.rejectByBank();
+    }
+
+
+    @Test
+    void shouldRejectEmptyCardNumberWithCredit() {
         MainPage page = new MainPage();
         val cardNumber = DataHelper.getCardNumberEmpty();
         val month = DataHelper.getValidMonth();
@@ -90,7 +238,7 @@ public class MainPageTest {
     }
 
     @Test
-    void shouldRejectEmptyMonth() {
+    void shouldRejectEmptyMonthWithCredit() {
         MainPage page = new MainPage();
         val cardNumber = DataHelper.getFirstCardNumber();
         val month = DataHelper.getEmptyMonth();
@@ -102,7 +250,31 @@ public class MainPageTest {
     }
 
     @Test
-    void shouldRejectEmptyYear() {
+    void shouldRejectInvalidMonthWithCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getInvalidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.durationProblems();
+    }
+
+    @Test
+    void shouldRejectZeroMonthWithCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getZeroMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.durationProblems();
+    }
+
+    @Test
+    void shouldRejectEmptyYearWithCredit() {
         MainPage page = new MainPage();
         val cardNumber = DataHelper.getFirstCardNumber();
         val month = DataHelper.getValidMonth();
@@ -114,7 +286,19 @@ public class MainPageTest {
     }
 
     @Test
-    void shouldRejectEmptyOwner() {
+    void shouldRejectInvalidYearWithCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getInvalidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.periodValidityProblems();
+    }
+
+    @Test
+    void shouldRejectEmptyOwnerWithCredit() {
         MainPage page = new MainPage();
         val cardNumber = DataHelper.getFirstCardNumber();
         val month = DataHelper.getValidMonth();
@@ -126,7 +310,19 @@ public class MainPageTest {
     }
 
     @Test
-    void shouldRejectEmptyCvs() {
+    void shouldRejectInvalidOwnerWithCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getInvalidOwner();
+        val cvs = DataHelper.getValidCvs();
+        page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
+
+    @Test
+    void shouldRejectEmptyCvsWithCredit() {
         MainPage page = new MainPage();
         val cardNumber = DataHelper.getFirstCardNumber();
         val month = DataHelper.getValidMonth();
@@ -137,5 +333,15 @@ public class MainPageTest {
         page.formatProblems();
     }
 
-
+    @Test
+    void shouldRejectInvalidCvsWithCredit() {
+        MainPage page = new MainPage();
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getInvalidCvs();
+        page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.formatProblems();
+    }
 }
