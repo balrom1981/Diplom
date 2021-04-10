@@ -11,6 +11,7 @@ import ru.netology.data.DataHelper;
 import ru.netology.page.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainPageTest {
 
@@ -39,7 +40,11 @@ public class MainPageTest {
         val owner = DataHelper.getValidOwner();
         val cvs = DataHelper.getValidCvs();
         page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
-        page.approvedByBank();
+//        page.approvedByBank();
+        val expected = DataHelper.getFirstCardStatus();
+        val actual = DataHelper.getStatusPaymentWithoutCredit();
+        assertEquals(expected, actual);
+
     }
 
     @Test
@@ -51,7 +56,11 @@ public class MainPageTest {
         val owner = DataHelper.getValidOwner();
         val cvs = DataHelper.getValidCvs();
         page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
-        page.rejectByBank();
+//        page.rejectByBank();
+        val expected = DataHelper.getSecondCardStatus();
+        val actual = DataHelper.getStatusPaymentWithoutCredit();
+        assertEquals(expected, actual);
+
     }
 
     @Test
@@ -198,6 +207,9 @@ public class MainPageTest {
         val cvs = DataHelper.getValidCvs();
         page.buyWithCredit(cardNumber, month, year, owner, cvs);
         page.approvedByBank();
+        val expected = DataHelper.getFirstCardStatus();
+        val actual = DataHelper.getStatusPaymentWithCredit();
+        assertEquals(expected, actual);
     }
 
     @Test
