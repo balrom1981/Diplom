@@ -1,5 +1,6 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
@@ -40,6 +41,8 @@ public class SqlTest {
         val owner = DataHelper.getValidOwner();
         val cvs = DataHelper.getValidCvs();
         page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        Configuration.timeout = 15000;
+        page.approvedByBank();
         val expected = DataHelper.getFirstCardStatus();
         val actual = DataHelper.getStatusPaymentWithoutCredit();
         assertEquals(expected, actual);
@@ -55,6 +58,7 @@ public class SqlTest {
         val owner = DataHelper.getValidOwner();
         val cvs = DataHelper.getValidCvs();
         page.buyWithoutCredit(cardNumber, month, year, owner, cvs);
+        page.approvedByBank();
         val expected = DataHelper.getSecondCardStatus();
         val actual = DataHelper.getStatusPaymentWithoutCredit();
         assertEquals(expected, actual);
@@ -70,6 +74,7 @@ public class SqlTest {
         val owner = DataHelper.getValidOwner();
         val cvs = DataHelper.getValidCvs();
         page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.approvedByBank();
         val expected = DataHelper.getFirstCardStatus();
         val actual = DataHelper.getStatusPaymentWithCredit();
         assertEquals(expected, actual);
@@ -84,6 +89,7 @@ public class SqlTest {
         val owner = DataHelper.getValidOwner();
         val cvs = DataHelper.getValidCvs();
         page.buyWithCredit(cardNumber, month, year, owner, cvs);
+        page.approvedByBank();
         val expected = DataHelper.getSecondCardStatus();
         val actual = DataHelper.getStatusPaymentWithCredit();
         assertEquals(expected, actual);
