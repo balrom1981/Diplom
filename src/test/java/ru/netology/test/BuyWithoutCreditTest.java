@@ -21,6 +21,7 @@ public class BuyWithoutCreditTest {
 
     @BeforeEach
     void shouldOpenWeb() {
+        DatabaseHelper.cleanDataBase();
         open("http://localhost:8080", MainPage.class);
         mainPage.buyWithoutCredit();
 

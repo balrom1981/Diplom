@@ -20,7 +20,8 @@ public class BuyWithCreditTest {
     PaymentPage paymentPage = new PaymentPage();
 
     @BeforeEach
-    void shouldOpenWeb() {
+    void shouldCleanDataBaseAndOpenWeb() {
+        DatabaseHelper.cleanDataBase();
         open("http://localhost:8080", MainPage.class);
         mainPage.buyWithCredit();
 
@@ -46,7 +47,7 @@ public class BuyWithCreditTest {
         paymentPage.fillOutFields(cardNumber, month, year, owner, cvs);
         paymentPage.expectApprovalFromBank();
         val expected = DataHelper.getFirstCardExpectedStatus();
-        val actual = DatabaseHelper.getStatusPaymentWithoutCredit();
+        val actual = DatabaseHelper.getStatusPaymentWithCredit();
         assertEquals(expected, actual);
     }
 
@@ -60,7 +61,7 @@ public class BuyWithCreditTest {
         paymentPage.fillOutFields(cardNumber, month, year, owner, cvs);
         paymentPage.expectRejectionFromBank();
         val expected = DataHelper.getSecondCardExpectedStatus();
-        val actual = DatabaseHelper.getStatusPaymentWithoutCredit();
+        val actual = DatabaseHelper.getStatusPaymentWithCredit();
         assertEquals(expected, actual);
 
     }
