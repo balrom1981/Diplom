@@ -1,12 +1,9 @@
 package ru.netology.data;
 
 import com.github.javafaker.Faker;
-import lombok.val;
 
-import java.sql.SQLException;
+
 import java.util.Locale;
-
-import static java.sql.DriverManager.getConnection;
 
 public class DataHelper {
     private static Faker faker = new Faker(new Locale("en"));

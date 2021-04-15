@@ -2,7 +2,6 @@ package ru.netology.data;
 
 import lombok.val;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import static java.sql.DriverManager.getConnection;
@@ -16,6 +15,7 @@ public class DatabaseHelper {
 
         try (
                 val connection = getConnection("jdbc:mysql://localhost:3306/app", "user", "pass");
+//                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
                 val statusStmt = connection.createStatement();
         ) {
             try (val rs = statusStmt.executeQuery(statusSql)) {
@@ -36,6 +36,7 @@ public class DatabaseHelper {
 
         try (
                 val connection = getConnection("jdbc:mysql://localhost:3306/app", "user", "pass");
+//                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
                 val statusStmt = connection.createStatement();
         ) {
             try (val rs = statusStmt.executeQuery(statusSql)) {
@@ -57,11 +58,13 @@ public class DatabaseHelper {
         val credits = "DELETE FROM credit_request_entity";
         val orders = "DELETE FROM order_entity";
 
-        try (val connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "user", "pass");
-             val prepareStatPay = connect.prepareStatement(pays);
-             val prepareStatCredit = connect.prepareStatement(credits);
-             val prepareStatOrder = connect.prepareStatement(orders);
+        try (
+                val connection = getConnection("jdbc:mysql://localhost:3306/app", "user", "pass");
+//                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
 
+                val prepareStatPay = connection.createStatement();
+                val prepareStatCredit = connection.createStatement();
+                val prepareStatOrder = connection.createStatement();
 
         ) {
             prepareStatPay.executeUpdate(pays);

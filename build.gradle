@@ -30,6 +30,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testImplementation 'com.codeborne:selenide:5.19.0'
     testImplementation 'mysql:mysql-connector-java:8.0.22'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'io.qameta.allure:allure-selenide:2.13.6'
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
