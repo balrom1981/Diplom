@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import static java.sql.DriverManager.getConnection;
 
 public class DatabaseHelper {
-    private static String url;
-    private static String user = "user";
-    private static String password = "pass";
+    private static final String url = System.getProperty("url");
+    private static final String user = "user";
+    private static final String password = "pass";
     private DatabaseHelper() {
     }
 

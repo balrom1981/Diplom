@@ -29,7 +29,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testImplementation 'com.codeborne:selenide:5.19.0'
-    testImplementation 'mysql:mysql-connector-java:8.0.22'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'io.qameta.allure:allure-selenide:2.13.6'
@@ -40,6 +40,6 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    systemProperty 'selenide.url', System.getProperty('selenide.url')
+    systemProperty 'url', System.getProperty('url')
 
 }
