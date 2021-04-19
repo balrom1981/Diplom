@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import static java.sql.DriverManager.getConnection;
 
 public class DatabaseHelper {
+    private static String url;
+    private static String user = "user";
+    private static String password = "pass";
     private DatabaseHelper() {
     }
 
@@ -14,7 +17,7 @@ public class DatabaseHelper {
         val statusSql = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1";
 
         try (
-                val connection = getConnection("jdbc:mysql://localhost:3306/app", "user", "pass");
+                val connection = getConnection(url, user, password);
 //                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
                 val statusStmt = connection.createStatement();
         ) {
@@ -35,7 +38,7 @@ public class DatabaseHelper {
         val statusSql = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
 
         try (
-                val connection = getConnection("jdbc:mysql://localhost:3306/app", "user", "pass");
+                val connection = getConnection(url, user, password);
 //                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
                 val statusStmt = connection.createStatement();
         ) {
@@ -59,7 +62,7 @@ public class DatabaseHelper {
         val orders = "DELETE FROM order_entity";
 
         try (
-                val connection = getConnection("jdbc:mysql://localhost:3306/app", "user", "pass");
+                val connection = getConnection(url, user, password);
 //                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
 
                 val prepareStatPay = connection.createStatement();
