@@ -89,6 +89,18 @@ public class BuyWithoutCreditTest {
     }
 
     @Test
+    void shouldRejectZeroCardNumber() {
+        val cardNumber = DataHelper.getCardNumberZero();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getValidCvs();
+        paymentPage.fillOutFields(cardNumber, month, year, owner, cvs);
+        paymentPage.waitInvalidFormat();
+    }
+
+
+    @Test
     void shouldRejectEmptyMonth() {
         val cardNumber = DataHelper.getFirstCardNumber();
         val month = DataHelper.getEmptyMonth();
@@ -166,6 +178,17 @@ public class BuyWithoutCreditTest {
     }
 
     @Test
+    void shouldRejectLongOwner() {
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getLongOwner();
+        val cvs = DataHelper.getValidCvs();
+        paymentPage.fillOutFields(cardNumber, month, year, owner, cvs);
+        paymentPage.waitInvalidFormat();
+    }
+
+    @Test
     void shouldRejectEmptyCvs() {
         val cardNumber = DataHelper.getFirstCardNumber();
         val month = DataHelper.getValidMonth();
@@ -183,6 +206,17 @@ public class BuyWithoutCreditTest {
         val year = DataHelper.getValidYear();
         val owner = DataHelper.getValidOwner();
         val cvs = DataHelper.getInvalidCvs();
+        paymentPage.fillOutFields(cardNumber, month, year, owner, cvs);
+        paymentPage.waitInvalidFormat();
+    }
+
+    @Test
+    void shouldRejectZeroCvs() {
+        val cardNumber = DataHelper.getFirstCardNumber();
+        val month = DataHelper.getValidMonth();
+        val year = DataHelper.getValidYear();
+        val owner = DataHelper.getValidOwner();
+        val cvs = DataHelper.getZeroCvs();
         paymentPage.fillOutFields(cardNumber, month, year, owner, cvs);
         paymentPage.waitInvalidFormat();
     }

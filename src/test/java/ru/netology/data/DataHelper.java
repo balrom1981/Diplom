@@ -35,6 +35,10 @@ public class DataHelper {
         return "                   ";
     }
 
+    public static String getCardNumberZero() {
+        return "0000 0000 0000 0000";
+    }
+
     public static String getValidMonth() {
         return "01";
     }
@@ -75,6 +79,10 @@ public class DataHelper {
         return "  ";
     }
 
+    public static String getLongOwner() {
+        return "Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин Владимир Ленин";
+    }
+
     public static String getValidCvs() {
         return "456";
     }
@@ -87,4 +95,7 @@ public class DataHelper {
         return "  ";
     }
 
+    public static String getZeroCvs() {
+        return "000";
+    }
 }
