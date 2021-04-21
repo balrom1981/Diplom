@@ -8,8 +8,8 @@ import static java.sql.DriverManager.getConnection;
 
 public class DatabaseHelper {
     private static final String url = System.getProperty("url");
-    private static final String user = "user";
-    private static final String password = "pass";
+    private static final String user = System.getProperty("user");
+    private static final String password = System.getProperty("password");
     private DatabaseHelper() {
     }
 
