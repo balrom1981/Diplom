@@ -1,6 +1,6 @@
 ## Ссылки: 
 1. [План тестирования](https://github.com/balrom1981/Diplom/blob/master/myreports/Plan.md).
-1. 
+1. [Отчет о тестировании](https://github.com/balrom1981/Diplom/blob/master/myreports/Report.md).
 1. 
 
 ## Процедура запуска тестов сервиса покупки путешествий для MySql
