@@ -18,7 +18,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./data:/varpostgres/lib/postgres/data
+      - ./datadir:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=appps
       - POSTGRES_USER=userps
