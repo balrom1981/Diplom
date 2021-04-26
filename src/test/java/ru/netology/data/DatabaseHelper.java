@@ -18,7 +18,6 @@ public class DatabaseHelper {
 
         try (
                 val connection = getConnection(url, user, password);
-//                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
                 val statusStmt = connection.createStatement();
         ) {
             try (val rs = statusStmt.executeQuery(statusSql)) {
@@ -39,7 +38,6 @@ public class DatabaseHelper {
 
         try (
                 val connection = getConnection(url, user, password);
-//                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
                 val statusStmt = connection.createStatement();
         ) {
             try (val rs = statusStmt.executeQuery(statusSql)) {
@@ -63,7 +61,6 @@ public class DatabaseHelper {
 
         try (
                 val connection = getConnection(url, user, password);
-//                val connection = getConnection("jdbc:postgresql://localhost:5432/app", "user", "pass");
 
                 val prepareStatPay = connection.createStatement();
                 val prepareStatCredit = connection.createStatement();
